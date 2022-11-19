@@ -1,63 +1,81 @@
 package tarea3;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.Graphics;
 
-public abstract class Moneda extends JLabel {
-
-    public Moneda() {
-        super();
+public abstract class Moneda {
+    protected int serie;
+    protected int x, y;
+    public Moneda(int s) {
+        this.serie = s;
     }
-
     public Moneda getSerie() {
         return this;
     }
-
-    public void setXY(int x1, int y1) {
-        this.setLocation(x1, y1);
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
-
     public abstract int getValor();
+    public abstract void paint(Graphics g);
 }
 
-class M500 extends Moneda {
- public M500() {
-        super();
-
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/Tarea-3-progra-2/500.png"));
-        this.setIcon(imagen);
-        this.setSize(imagen.getIconWidth(),imagen.getIconHeight());
+class Moneda100 extends Moneda {
+    public Moneda100() {
+        super((int)(Math.random()*100));
     }
-    @Override
-    public int getValor() {
-        return 500;
-    }
-}
-
-class M100 extends Moneda {
- public M100() {
-        super();
-
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/Tarea-3-progra-2/100.png"));
-        this.setIcon(imagen);
-        this.setSize(imagen.getIconWidth(),imagen.getIconHeight());
-    }
-    @Override
     public int getValor() {
         return 100;
     }
+    public void paint(Graphics g) {
+        g.setColor(Color.yellow);
+        g.fillOval(this.x, this.y, 20, 20);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x+3, this.y+15);
+    }
 }
 
-class M1000 extends Moneda {
- public M1000() {
-        super();
-
-        ImageIcon imagen = new ImageIcon(getClass().getResource("/Tarea-3-progra-2/1000.png"));
-        this.setIcon(imagen);
-        this.setSize(imagen.getIconWidth(),imagen.getIconHeight());
+class Moneda500 extends Moneda {
+    public Moneda500() {
+        super((int)(Math.random()*100));
     }
-    @Override
+    public int getValor() {
+        return 500;
+    }
+    public void paint(Graphics g) {
+        g.setColor(new Color(255,148,8));
+        g.fillOval(this.x, this.y, 20, 20);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x+3, this.y+15);
+    }
+}
+
+class Moneda1000 extends Moneda {
+    public Moneda1000() {
+        super((int)(Math.random()*100));
+    }
     public int getValor() {
         return 1000;
+    }
+    public void paint(Graphics g) {
+        g.setColor(new Color(173,255,8));
+        g.fillOval(this.x, this.y, 20, 20);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x+3, this.y+15);
+    }
+}
+
+class Moneda1500 extends Moneda {
+    public Moneda1500() {
+        super((int)(Math.random()*100));
+    }
+    public int getValor() {
+        return 1500;
+    }
+    public void paint(Graphics g) {
+        g.setColor(new Color(38,219,255));
+        g.fillOval(this.x, this.y, 20, 20);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x+3, this.y+15);
     }
 }

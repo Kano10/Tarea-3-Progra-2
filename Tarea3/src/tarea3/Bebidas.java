@@ -1,42 +1,64 @@
 package tarea3;
 
-public abstract class Bebidas {
-    public int numSerie;
-    public int numDisponible;
+import java.awt.*;
 
-    public Bebidas(int numDisponible) {
-        this.numDisponible = numDisponible;
+public abstract class Bebidas {
+    protected int serie;
+    protected int x, y;
+    public Bebidas(int n) {
+        serie = n;
+    }
+    public int getSerie() {
+        return serie;
+    }
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
     public abstract String beber();
+    public abstract void paint(Graphics g);
 }
-    
-class CocaCola extends Bebidas{  
 
-    public CocaCola(int numDisponible) {
-        super(numDisponible);
+class CocaCola extends Bebidas {
+    public CocaCola(int n) {
+        super(n);
     }
-    @Override
-    public String beber(){
-        return "Coca-Cola";
+    public String beber() {
+        return new String("cocacola");
     }
+    public void paint(Graphics g) {
+        g.setColor(Color.red);
+        g.fillRect(this.x, this.y, 17, 30);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x, this.y+20);
     }
-class Fanta extends Bebidas{  
+}
 
-    public Fanta(int numDisponible) {
-        super(numDisponible);
+class Sprite extends Bebidas {
+    public Sprite(int n) {
+        super(n);
     }
-    @Override
-    public String beber(){
-        return "Fanta";
+    public String beber() {
+        return new String("sprite");
     }
+    public void paint(Graphics g) {
+        g.setColor(Color.green);
+        g.fillRect(this.x, this.y, 17, 30);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x, this.y+20);
     }
-class Sprite extends Bebidas{
-
-    public Sprite(int numDisponible) {
-        super(numDisponible);
+}
+class Fanta extends Bebidas {
+    public Fanta (int n) {
+        super(n);
     }
-    @Override
-    public String beber(){
-        return "Sprite";
+    public String beber() {
+        return new String("fanta");
     }
+    public void paint(Graphics g) {
+        g.setColor(Color.orange);
+        g.fillRect(this.x, this.y, 17, 30);
+        g.setColor(Color.black);
+        g.drawString(""+this.serie, this.x, this.y+20);
     }
+}
