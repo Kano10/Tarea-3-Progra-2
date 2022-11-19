@@ -1,23 +1,18 @@
 
 package tarea3;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class Ventana extends JFrame {
-    private PanelPrincipal panel;
-    public Ventana(){
-        super();
-        this.setTitle("Maquina Expendedora");
-        this.setSize(1280,720);
-        this.setLocationRelativeTo(null);
+    public Ventana(String s) {
+        this.setLayout(new BorderLayout());
+        Ambiente a = new Ambiente();
+        this.add(a, BorderLayout.CENTER);
+        this.setTitle("Expendedor");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setResizable(false);
-        panel = new PanelPrincipal();
-        this.getContentPane().add(panel);
-        this.add(panel);
+        this.setSize(800, 600);
         this.setVisible(true);
-        
     }
 }
